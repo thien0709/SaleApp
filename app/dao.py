@@ -5,3 +5,6 @@ def load_categories():
         {"id": 3, "name": "PC"},
         {"id": 4, "name": "PCB"}
         ]
+
+def load_products():
+    return
