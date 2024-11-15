@@ -10,6 +10,11 @@ def index():
     product = dao.load_products(cate_id= cate_id)
     return render_template("index.html",categories = cates,products = product)
 
+@app.route("/login", methods = ['post','get'])
+def login_user():
+    if(request.method.__eq__('POST')):
+        print(request.form)
+    return render_template('login.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
