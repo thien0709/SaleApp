@@ -1,11 +1,20 @@
-{%extends 'layout/base.html'%}
-{%block content%}
+{% extends 'layout/base.html' %}
+{% block content %}
 {% if products %}
+    {% if page > 1 %}
+    <ul class="pagination mt-1">
+        {% for i in range(1, page + 1) %}
+        <li class="page-item">
+            <a href="/?page={{i}}" class="page-link">{{i}}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
 <div class="row m-auto container">
     {% for p in products %}
     <div class="col-md-4 col-12 p-2">
         <div class="card">
-            <img class="card-img-top" src={{p.image}} alt="{{p.name}}">
+            <img class="card-img-top" src="{{p.image}}" alt="{{p.name}}">
             <div class="card-body">
                 <h4 class="card-title">{{p.name}}</h4>
                 <p class="card-text">{{p.description}}</p>
@@ -15,9 +24,9 @@
             </div>
         </div>
     </div>
-    {% endfor%}
+    {% endfor %}
 </div>
 {% else %}
 <div class="alert alert-info mt-1">KHÔNG có sản phẩm nào.</div>
 {% endif %}
-{%endblock%}
+{% endblock %}
